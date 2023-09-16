@@ -31,7 +31,7 @@ app.get("/json", (_req, res) => {
 });
 
 app.get(
-  "/time",
+  "/now",
   (req, _res, next) => {
     req.time = new Date().toString();
     next();
