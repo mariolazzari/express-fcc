@@ -11,7 +11,7 @@ const publicPath = join(__dirname, "public");
 app.use("/public", express.static(publicPath));
 
 // logger
-app.use((req, res, next) => {
+app.use((req, _res, next) => {
   const { method, path, ip } = req;
   console.log(`${method} ${path} - ${ip}`);
   next();
