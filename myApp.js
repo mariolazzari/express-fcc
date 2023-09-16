@@ -30,4 +30,15 @@ app.get("/json", (_req, res) => {
   res.json({ message });
 });
 
+app.get(
+  "/time",
+  (req, _res, next) => {
+    req.time = new Date().toString();
+    next();
+  },
+  (req, res) => {
+    res.json({ time: req.time });
+  }
+);
+
 module.exports = app;
