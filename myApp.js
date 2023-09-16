@@ -4,7 +4,7 @@ const { join } = require("path");
 
 // console.log("Hello World");
 const publicPath = join(__dirname, "public");
-app.use(express.static(publicPath));
+app.use("/public", express.static(publicPath));
 
 app.get("/", (_req, res) => {
   // res.send("Hello Express");
