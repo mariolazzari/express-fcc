@@ -2,20 +2,18 @@ let express = require("express");
 let app = express();
 const { join } = require("path");
 require("dotenv").config();
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 
 // console.log("Hello World");
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
 const publicPath = join(__dirname, "public");
 app.use("/public", express.static(publicPath));
 
 // logger
 app.use((req, res, next) => {
   const { method, path, ip } = req;
-
   console.log(`${method} ${path} - ${ip}`);
-
   next();
 });
 
