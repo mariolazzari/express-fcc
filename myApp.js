@@ -50,11 +50,19 @@ app.get("/:word/echo", (req, res) => {
   res.json({ echo: word });
 });
 
-app.route("/name").get((req, res) => {
-  const { first, last } = req.query;
-  const name = `${first} ${last}`;
+app
+  .route("/name")
+  .get((req, res) => {
+    const { first, last } = req.query;
+    const name = `${first} ${last}`;
 
-  res.json({ name });
-}); //.post(handler);
+    res.json({ name });
+  })
+  .post((req, res) => {
+    const { first, last } = req.body;
+    const name = `${first} ${last}`;
+
+    res.json({ name });
+  });
 
 module.exports = app;
