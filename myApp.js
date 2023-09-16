@@ -7,6 +7,15 @@ require("dotenv").config();
 const publicPath = join(__dirname, "public");
 app.use("/public", express.static(publicPath));
 
+// logger
+app.use((req, res, next) => {
+  const { method, path, ip } = req;
+
+  console.log(`${method} ${path} - ${ip}`);
+
+  next();
+});
+
 app.get("/", (_req, res) => {
   // res.send("Hello Express");
   const indexFile = join(__dirname, "views/index.html");
@@ -14,11 +23,11 @@ app.get("/", (_req, res) => {
 });
 
 app.get("/json", (_req, res) => {
-  const obj = { message: "Hello json" };
+  let message = "Hello json";
   if (process.env.MESSAGE_STYLE === "uppercase") {
-    obj.message.toUpperCase();
+    message = message.toUpperCase();
   }
-  res.json(obj);
+  res.json({ message });
 });
 
 module.exports = app;
