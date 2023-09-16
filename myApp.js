@@ -12,4 +12,9 @@ app.get("/", (_req, res) => {
   res.sendFile(indexFile);
 });
 
+app.get("/json", (_req, res) => {
+  const obj = { message: "Hello json" };
+  res.json(obj);
+});
+
 module.exports = app;
