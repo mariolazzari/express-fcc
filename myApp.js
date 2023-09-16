@@ -1,7 +1,7 @@
 let express = require("express");
 let app = express();
 const { join } = require("path");
-require("dotenv").config();
+// require("dotenv").config();
 
 // console.log("Hello World");
 const publicPath = join(__dirname, "public");
